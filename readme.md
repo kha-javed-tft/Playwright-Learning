@@ -123,7 +123,7 @@ page.waitForTimeout(5000)
 # frame/iframe, 
 
 capture total frames
-- const allframes=await page.frames()
+- const allframes=await page.frames()--> to gett all the frames in one embeded frames on one screen 
 
 approach: frame objects ...> to know better visit frame documentations
 
@@ -212,6 +212,9 @@ test.afterEach(async()=>{
 
 
 # Grouping Tests - Describe Block 
+some times we have n number of test cases and we need to group it multiple categories
+so whenever we have to group the test we can use grouping concept. with the help of describe we can group our tests.
+
 test.describe(async()=<{
   test("test1",async(page)=>{
     console.log()
@@ -243,6 +246,8 @@ add in playwright.config.js
 trace="on"
 
 # How to Tag playwright tests
+some times we can teag the test and want to run our tagging test.
+
 by using @sainity or @ reg
 we can run the test by using tag name so that we can run whatever we want
 --grep @tag name (included)
@@ -250,15 +255,51 @@ we can run the test by using tag name so that we can run whatever we want
 
 # Annotations | Only, Skip,Fail, Fixme & Slow 
 
+annotation can be used in a group or in single. with the help of these annotation our task is a is easy in a group test.
+
 # Page Object Model Pattern | POM |
+
+page objct model is a framework or a pattern in which we have maintain page elements in seprate files
+
 
 # How To handle Multiple Pages/Windows | Browser Context |
 
+to create our own page we can do it with the help of Browser context.
+pages: a page can refer a tab or pop up windows
+
+import {page,expect,chromium} from"@playwright/test";
+or
+cosnt {page, expect, chromium}= require("@playwright/test")
+
+for this we don't need to pass page fixure
+example:
+  test("Browser COntext", async ()={
+    // create a browser
+    const browser= await chromium.launch()
+    // create a context with the help of browser
+
+    cosnt constext = await browser.newContext()
+  })
+
 # Reporters | List, Dot, Json, JUnit & HTML Reporters
+
+set in config files
 
 # How to Generate Allure Reports
 
+install alure module
+then based on the documentations go step by step.
+
+set credentials in config file and the used allure reports.
+the we get a alure test file by using these files we need to genrate html reports
+
 # How To Retry Failed Test Cases | Retries and Test Flakiness 
+
+run--> passed
+run--> failed
+run--> failed --run--> passed = falky
+
+to set this automatically fix the issue we set it in config file
 
 # Rest API Testing | HTTP Requests |Get,Post,Put & Delete 
 
